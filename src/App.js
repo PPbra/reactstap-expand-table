@@ -1,9 +1,26 @@
 import React, { Component } from 'react';
 import ReactstrapTable from './reactstrap-table';
+import { Input, Label, Form } from 'reactstrap';
+
 
 class App extends Component {
+
+  renderExpandRow = (row) => {
+    return (
+      <div className="animated fadeIn faster">
+        <Form>
+          <Label>name</Label>
+          <Input
+            defaultValue={row.name}
+            disabled />
+        </Form>
+      </div>
+    )
+  }
+
+
   render() {
-    const header = ["Expand", "Id", 'Name', 'Phone'];
+    const header = ["Id", 'Name', 'Phone'];
     const rows = [
       {
         name: 'phuong',
@@ -24,7 +41,7 @@ class App extends Component {
 
     return (
       <div className="App">
-        <ReactstrapTable header={header} rows={rows} />
+        <ReactstrapTable header={header} rows={rows} expandRowFunct={this.renderExpandRow} />
       </div>
     );
   }

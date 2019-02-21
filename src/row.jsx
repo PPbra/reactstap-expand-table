@@ -43,7 +43,11 @@ export default class Row extends Component {
                         this.setState({
                             isExpand: !this.state.isExpand
                         });
-                    }}><Button color="danger">Danger!</Button></th>
+                    }}>
+                        <Button id="carts-fa-search-plus">
+                            <i className="fas fa-search-plus" />
+                        </Button>
+                    </th>
                     {
                         this.renderRow()
                     }

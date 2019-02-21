@@ -1,28 +1,16 @@
 import React, { Component } from 'react';
-import { Table, Input, Label, Form } from 'reactstrap';
+import { Table } from 'reactstrap';
 import Row from './row';
 
 
 export default class ReactstrapTable extends Component {
 
-    renderExpandRow = (row) => {
-        return (
-            <div className="animated fadeIn faster">
-                <Form>
-                    <Label>name</Label>
-                    <Input
-                        defaultValue={row.name}
-                        disabled />
-                </Form>
-            </div>
-        )
-    }
 
     renderRows = () => {
         const { rows } = this.props;
         const { header } = this.props;
 
-        return !!rows ? rows.map((row, index) => (<Row key={index} expand={this.renderExpandRow} row={row} colSpanSize={!!header ? header.length : 0}></Row>)) : null
+        return !!rows ? rows.map((row, index) => (<Row key={index} expand={this.props.expandRowFunct} row={row} colSpanSize={!!header ? header.length + 1 : 1}></Row>)) : null
     }
 
     renderHeader = () => {
@@ -35,6 +23,7 @@ export default class ReactstrapTable extends Component {
             <Table striped >
                 <thead>
                     <tr>
+                        <th>Expand</th>
                         {this.renderHeader()}
                     </tr>
                 </thead>
