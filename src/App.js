@@ -1,25 +1,30 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import ReactstrapTable from './reactstrap-table';
 
 class App extends Component {
   render() {
+    const header = ["Expand", "Id", 'Name', 'Phone'];
+    const rows = [
+      {
+        name: 'phuong',
+        id: '1',
+        phone: '0971486734'
+      },
+      {
+        name: 'phuong',
+        id: '2',
+        phone: '0971486734'
+      },
+      {
+        name: 'phuong',
+        id: '3',
+        phone: '0971486734'
+      }
+    ]
+
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        <ReactstrapTable header={header} rows={rows} />
       </div>
     );
   }
